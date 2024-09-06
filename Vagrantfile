@@ -1,6 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+
+# TODO: clean up repo by storing .sh and .conf files in folders
+# will then have to add folder into file paths during configuration
+# e.g., adding "sh/" -> frontendserver.vm.provision "shell", path: "sh/build-frontendserver-vm.sh"
+
+
 # A Vagrantfile to set up two VMs, a frontend UI, database, and a backend.
 
 Vagrant.configure("2") do |config|
@@ -29,16 +35,16 @@ Vagrant.configure("2") do |config|
         frontendserver.vm.provision "shell", path: "build-frontendserver-vm.sh"
     end
 
-    # # VM 2 - Database
-    # config.vm.define "dbserver" do |dbserver|
-    #     dbserver.vm.hostname = "dbserver"
-    #     dbserver.vm.network "forwarded_port", guest: 80, host: 3036, host_ip: "127.0.0.1"
-    #     # note that no two vms should use the same private_network ip address
-    #     dbserver.vm.network "private_network", ip: "192.168.56.12"
-    #     dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
+    # VM 2 - Database
+    config.vm.define "dbserver" do |dbserver|
+        dbserver.vm.hostname = "dbserver"
+        dbserver.vm.network "forwarded_port", guest: 80, host: 8088, host_ip: "127.0.0.1"
+        # note that no two vms should use the same private_network ip address
+        dbserver.vm.network "private_network", ip: "192.168.56.12"
+        dbserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
 
-    #     # dbserver.vm.provision "shell", path: "build-dbserver-vm.sh"
-    # end
+        dbserver.vm.provision "shell", path: "build-dbserver-vm.sh"
+    end
 
     # VM 3 - Backend
     config.vm.define "backendserver" do |backendserver|
