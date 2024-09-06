@@ -40,14 +40,14 @@ Vagrant.configure("2") do |config|
     #     # dbserver.vm.provision "shell", path: "build-dbserver-vm.sh"
     # end
 
-    # # VM 3 - Backend
-    # config.vm.define "backendserver" do |backendserver|
-    #     backendserver.vm.hostname = "backendserver"
-    #     backendserver.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
-    #     # note that no two vms should use the same private_network ip address
-    #     backendserver.vm.network "private_network", ip: "192.168.56.13"
-    #     # may be important for markers
-    #     backendserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
-    #     # backendserver.vm.provision "shell", path: "build-backendserver-vm.sh"
-    # end
+    # VM 3 - Backend
+    config.vm.define "backendserver" do |backendserver|
+        backendserver.vm.hostname = "backendserver"
+        backendserver.vm.network "forwarded_port", guest: 80, host: 8081, host_ip: "127.0.0.1"
+        # note that no two vms should use the same private_network ip address
+        backendserver.vm.network "private_network", ip: "192.168.56.13"
+        # may be important for markers
+        backendserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
+        backendserver.vm.provision "shell", path: "build-backendserver-vm.sh"
+    end
 end
