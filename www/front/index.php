@@ -3,23 +3,7 @@
 
 <head>
     <title>Webserver test page</title>
-    <style>
-        th {
-            text-align: left;
-        }
-
-        table,
-        th,
-        td {
-            border: 2px solid grey;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 0.2em;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
