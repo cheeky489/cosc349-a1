@@ -2,22 +2,94 @@
 <html>
 
 <head>
-    <title>Webserver test page</title>
+    <title>Le Budget</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>My frontend webserver test page.</h1>
+    <h1>Rental House Budget Overview</h1>
+    <?php
 
-    <p>This page demonstrates that the webserver on your VM is generating content.</p>
+    $serverhost   = '192.168.56.12';
+    $dbname   = 'budget';
+    $username   = 'webuser';
+    $password = 'lolpassword';
 
-    <p>You likely now want to <a href="test-database.php">proceed to your webserver's
-            database connection testing page</a>. However, note that if there is a network problem reaching the database, the database connection testing page will spend a minute or so waiting before it produces any content.</p>
+    // create connection
+    $conn = new mysqli($serverhost, $username, $password, $dbname);
 
-    <p>For your assignment work, your project should begin on this page. The only reason the database testing page was not placed within <kbd>index.php</kbd> was to assist you in debugging any network problems you might be having.</p>
+    // check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-    <p>
-        Yay, I can now access a website.
-    <h1>Now its time to get to work on the front end</h1>
-    </p>
+    // query to fetch renters
+    $sqlRenters = "SELECT renter_id, name, email, phone, join_date FROM renters";
+    $resultRenters = $conn->query($sqlRenters);
+
+    if ($resultRenters->num_rows > 0) {
+        echo "<h2 class='center'>Renters</h2>";
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Join Date</th></tr>";
+        while ($row = $resultRenters->fetch_assoc()) {
+            echo "<tr>
+                <td>" . $row["renter_id"] . "</td>
+                <td>" . $row["name"] . "</td>
+                <td>" . $row["email"] . "</td>
+                <td>" . $row["phone"] . "</td>
+                <td>" . $row["join_date"] . "</td>
+              </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p class='center'>No renters found.</p>";
+    }
+
+    // query to fetch bills
+    $sqlBills = "SELECT bill_id, description, amount, due_date, status FROM bills";
+    $resultBills = $conn->query($sqlBills);
+
+    if ($resultBills->num_rows > 0) {
+        echo "<h2 class='center'>Bills</h2>";
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Description</th><th>Amount</th><th>Due Date</th><th>Status</th></tr>";
+        while ($row = $resultBills->fetch_assoc()) {
+            echo "<tr>
+                <td>" . $row["bill_id"] . "</td>
+                <td>" . $row["description"] . "</td>
+                <td>$" . number_format($row["amount"], 2) . "</td>
+                <td>" . $row["due_date"] . "</td>
+                <td>" . $row["status"] . "</td>
+              </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p class='center'>No bills found.</p>";
+    }
+
+    // query to fetch payments
+    $sqlPayments = "SELECT payment_id, amount, payment_date, renter_id FROM payments";
+    $resultPayments = $conn->query($sqlPayments);
+
+    if ($resultPayments->num_rows > 0) {
+        echo "<h2 class='center'>Payments</h2>";
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Amount</th><th>Payment Date</th><th>Renter ID</th></tr>";
+        while ($row = $resultPayments->fetch_assoc()) {
+            echo "<tr>
+                <td>" . $row["payment_id"] . "</td>
+                <td>$" . number_format($row["amount"], 2) . "</td>
+                <td>" . $row["payment_date"] . "</td>
+                <td>" . $row["renter_id"] . "</td>
+              </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p class='center'>No payments found.</p>";
+    }
+
+    // close the connection
+    $conn->close();
+    ?>
+    <h2><a href="http://127.0.0.1:8081/">Click here to add new information</a></h2>
 </body>
