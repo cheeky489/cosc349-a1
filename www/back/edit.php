@@ -113,7 +113,7 @@ $conn->close();
 
 <head>
     <title>Edit Bookmark</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 
 <body>
@@ -144,7 +144,7 @@ $conn->close();
         </p>
     </form>
 
-    <p><a href="index.php">Back to My Bookmarks</a></p>
+    <p><a href="index.php">Back to Manage Bookmarks</a></p>
 
 </body>
 
