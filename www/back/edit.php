@@ -1,8 +1,8 @@
 <?php
 
-$serverhost   = '192.168.56.12';
-$dbname   = 'bookmark_tool';
-$username   = 'webuser';
+$serverhost = '192.168.56.12';
+$dbname = 'bookmark_tool';
+$username = 'webuser';
 $password = 'lolpassword';
 
 // Create connection
@@ -113,38 +113,38 @@ $conn->close();
 
 <head>
     <title>Edit Bookmark</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h1><?php echo isset($bookmark_id) ? 'Edit Bookmark' : 'Add New Bookmark'; ?></h1>
 
-    <form method="post" action="edit.php">
+    <form class="form-fields" method="post" action="edit.php">
         <input type="hidden" name="bookmark_id" value="<?php echo isset($bookmark_id) ? $bookmark_id : ''; ?>">
         <p>
-            <label>Title:</label>
-            <input type="text" name="title" value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required>
+            <label class="label-txt">Title:</label>
+            <input class="input-box" type="text" name="title" placeholder="Name" value="<?php echo isset($title) ? htmlspecialchars($title) : ''; ?>" required>
         </p>
         <p>
-            <label>URL:</label>
-            <input type="url" name="url" value="<?php echo isset($url) ? htmlspecialchars($url) : ''; ?>" required>
+            <label class="label-txt">URL:</label>
+            <input class="input-box" type="url" name="url" placeholder="https://www.example.com" value="<?php echo isset($url) ? htmlspecialchars($url) : ''; ?>" required>
         </p>
         <p>
-            <label>Description:</label>
-            <textarea name="description" required><?php echo isset($description) ? htmlspecialchars($description) : ''; ?></textarea>
+            <label class="label-txt">Description:</label>
+            <textarea class="input-box" name="description" placeholder="Description" required><?php echo isset($description) ? htmlspecialchars($description) : ''; ?></textarea>
         </p>
         <p>
-            <label>Tags (comma-separated):</label>
-            <input type="text" name="tags" value="<?php echo isset($tags) ? htmlspecialchars($tags) : ''; ?>">
+            <label class="label-txt">Tags (comma-separated):</label>
+            <input class="input-box" type="text" name="tags" placeholder="Tags" value="<?php echo isset($tags) ? htmlspecialchars($tags) : ''; ?>">
         </p>
         <p>
-            <button type="submit" name="<?php echo isset($bookmark_id) ? 'update' : 'add'; ?>">
+            <button class="submit-btn" type="submit" name="<?php echo isset($bookmark_id) ? 'update' : 'add'; ?>">
                 <?php echo isset($bookmark_id) ? 'Update Bookmark' : 'Add Bookmark'; ?>
             </button>
         </p>
     </form>
 
-    <p><a href="index.php">Back to Manage Bookmarks</a></p>
+    <a class="back-btn" href="index.php">←</a>
 
 </body>
 
