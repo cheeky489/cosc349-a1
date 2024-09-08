@@ -1,5 +1,5 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
 
 <main>
 
@@ -7,22 +7,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manage Bookmarks</title>
-        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
         <h1>Manage Your Bookmarks</h1>
 
-        <!-- button which redirects to form to add new bookmark -->
-        <form action="edit.php">
-            <input type="submit" value="Add a bookmark" />
-        </form>
-
-        <h2>Current Bookmarks</h2>
+        <h2>Overview of Current Bookmarks</h2>
         <?php
-        $serverhost   = '192.168.56.12';
-        $dbname   = 'bookmark_tool';
-        $username   = 'webuser';
+        $serverhost = '192.168.56.12';
+        $dbname = 'bookmark_tool';
+        $username = 'webuser';
         $password = 'lolpassword';
 
         // create connection
@@ -55,8 +50,8 @@
                 echo "<td>" . htmlspecialchars($row["description"]) . "</td>";
                 echo "<td>" . htmlspecialchars($row["tags"]) . "</td>";
                 echo "<td>
-                    <a href='edit.php?edit=" . $row['bookmark_id'] . "'>Edit</a> |
-                    <a href='edit.php?delete=" . $row['bookmark_id'] . "' onclick='return confirm(\"Are you sure you want to delete this bookmark?\");'>Delete</a>
+                    <a class='t-btn' href='edit.php?edit=" . $row['bookmark_id'] . "'>Edit</a> |
+                    <a class='t-btn' href='edit.php?delete=" . $row['bookmark_id'] . "' onclick='return confirm(\"Are you sure you want to delete this bookmark?\");'>Delete</a>
                   </td>";
                 echo "</tr>";
             }
@@ -70,7 +65,13 @@
         $conn->close();
         ?>
 
-        <h2><a href="http://127.0.0.1:8080/">Go Back to Main Page</a></h2>
+        <!-- <h2>Add Bookmarks</h2> -->
+        <!-- button which redirects to form to add new bookmark -->
+        <form action="edit.php">
+            <input class="submit-btn" type="submit" value="Add a bookmark" />
+        </form>
+
+        <a class="back-btn" href="http://127.0.0.1:8080/">←</a>
     </body>
 </main>
 
