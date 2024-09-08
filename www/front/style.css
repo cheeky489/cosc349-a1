@@ -79,16 +79,23 @@ h1 {
 
 .add-btn {
     /* styling */
-    border-radius: 5px;
+    border-radius: 50%;
     background-color: #007bff;
     color: white;
     text-decoration: none;
 
     /* positioning */
-    padding-top: 20px;
-    padding-bottom: 20px;
-    display: block;
+    /* padding-top: 20px; */
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    display: flex;
     margin: auto;
-    width: 20%;
     text-align: center;
+}
+
+.add-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

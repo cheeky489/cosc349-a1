@@ -54,7 +54,7 @@
     $conn->close();
     ?>
 
-    <a class="add-btn" href="http://127.0.0.1:8081/">Click here to add new information</a>
+    <a class="add-btn" href="http://127.0.0.1:8081/">+</a>
 </body>
 
 </html>
