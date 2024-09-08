@@ -25,5 +25,5 @@ Then run the following commands in the command-line:
 ### Running the application
 
 Now the VMs should be up and running.
-Now, navigate to [http://127.0.0.1:8080/]{http://127.0.0.1:8080/} and you will be greeted by the main page.
+Now, navigate to [http://127.0.0.1:8080/](http://127.0.0.1:8080/ "Front facing page") and you will be greeted by the main page.
 There will be some data included when the VMs are initially built.
