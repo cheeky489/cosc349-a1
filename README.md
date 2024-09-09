@@ -20,6 +20,7 @@ Launch VSCode and navigate to the cloned repository.
 
 Then run the following commands in the command-line:
 > docker pull anthonyydng/vagrant-provider:ubuntu
+>
 > vagrant up --provider=docker
 
 ### Running the application
