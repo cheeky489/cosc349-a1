@@ -1,12 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-
-# TODO: clean up repo by storing .sh and .conf files in folders
-# will then have to add folder into file paths during configuration
-# e.g., adding "sh/" -> frontendserver.vm.provision "shell", path: "sh/build-frontendserver-vm.sh"
-
-
 # A Vagrantfile to set up two VMs, a frontend UI, database, and a backend.
 
 Vagrant.configure("2") do |config|
@@ -14,7 +8,7 @@ Vagrant.configure("2") do |config|
 
     # Typical `vagrant up` seems to assume the Docker provider anyway, but
     # `vagrant up --provider=docker` would be even more explicit.
-    # Thanks to https://github.com/rofrano/vagrant-docker-provider and example given by dme26
+    # Thanks to https://github.com/rofrano/vagrant-docker-provider and example given by dme26 in lab files
     config.vm.provider :docker do |docker, override|
         override.vm.box = nil
         docker.image = "anthonyydng/vagrant-provider:ubuntu"

@@ -65,7 +65,6 @@
         $conn->close();
         ?>
 
-        <!-- <h2>Add Bookmarks</h2> -->
         <!-- button which redirects to form to add new bookmark -->
         <form class="form-btn" action="edit.php">
             <input class="submit-btn" type="submit" value="Add a bookmark" />
