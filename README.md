@@ -15,13 +15,13 @@ The application is created using 3 VMs, all of which are described as follows:
 
 ### Prerequisites
 
-1. Vagrant - https://developer.hashicorp.com/vagrant/install?product_intent=vagrant
-2. Docker - https://www.docker.com/products/docker-desktop/
+1. Vagrant - `https://developer.hashicorp.com/vagrant/install?product_intent=vagrant`
+2. Docker - `https://www.docker.com/products/docker-desktop/`
 
 ### Building the application
 
 Clone this git repo onto your personal machine:
-<code>https://github.com/cheeky489/cosc349-a1.git</code>
+`https://github.com/cheeky489/cosc349-a1.git`
 
 Navigate to the cloned repository directory.
 
@@ -42,4 +42,4 @@ Once done with the application, navigate to the project directory command-line a
 All  VMs should stop running and now enter:
 > vagrant destroy
 
-Press `y` when prompted for every VM to remove them from your personal machine.
+Press `y` followed by `Enter` when prompted for every VM to remove them from your personal machine.
