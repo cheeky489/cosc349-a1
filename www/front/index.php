@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Le Bookmarks</title>
+    <title>Bookmarks Overview</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
