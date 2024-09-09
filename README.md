@@ -1,9 +1,14 @@
 # COSC349 assignment 1 (2024): 
 
-Using virtualisation for building and deployment of software applications.
 This repository contains the files required to build and deploy a bookmark management tool hosted using 3 separate VMs.
 
-## Instructions
+## Overview of VMs
+
+The first VM is a webserver that contains the main page of the application.
+The second VM is database server that stores the bookmark data.
+The third VM is a webserver that contains the functionality that allows the user to change data in the database from the bookmark tool site.
+
+## Instructions to Build and Deploy
 
 ### Prerequisites
 
