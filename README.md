@@ -42,4 +42,4 @@ Once done with the application, navigate to the project directory command-line a
 All  VMs should stop running and now enter:
 > vagrant destroy
 
-Pressing `y` for every VM to remove them from your personal machine.
+Press `y` when prompted for every VM to remove them from your personal machine.
